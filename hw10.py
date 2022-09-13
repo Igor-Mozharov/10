@@ -11,24 +11,25 @@ class Record:
         self.name = Name(new_name)
         self.phones = []
 
-    def __repr__(self):
-        return f'{self.phones}'
-
     def add_phone(self, new_phone):
         self.phones.append(Phone(new_phone))
 
     def change_phone(self, old_phone, new_phone):
-        if old_phone in self.phones:
-            self.phones.append(Phone(new_phone))
-            self.phones.remove(old_phone)
-        else:
-            print('Cant find this phone number')
+        for phone in self.phones:
+            if phone.value == old_phone:
+                self.phones.append(Phone(new_phone))
+                self.phones.remove(phone)
+            else:
+                print('Cant find this phone number')
 
     def remove_phone(self, old_phone):
         if old_phone in self.phones:
             self.phones.remove(old_phone)
         else:
             print('cant find this phone number')
+
+    def __repr__(self):
+        return f'{self.phones}'
 
 
 class Field:
