@@ -91,7 +91,9 @@ def add(text_input: str):
 @ input_error
 def change(text_input: str):
     if text_input.split()[1] in addressbook.data:
-        addressbook.data[text_input.split()[1]] = text_input.split()[2]
+        old_phone = input('enter phone number to change')
+        changing = addressbook.data[text_input.split()[1]]
+        changing.change_phone(old_phone, text_input.split()[2])
         print('it was changed')
     else:
         print('no contact')
@@ -139,13 +141,11 @@ def main():
 
 main()
 # user = Record('Igor')
-# user2 = Record('Dima')
 # user.add_phone('0500000000')
 # user.add_phone('5555555555')
-# user2.add_phone('777777777')
-# user2.add_phone('55555555')
 
 # adres = AddressBook()
 # adres.add_record(user)
-# adres.add_record(user2)
-# adres.data['Dima'] = '0655555555'
+
+# user.change_phone('0500000000', '777')
+# print(user.phones)
