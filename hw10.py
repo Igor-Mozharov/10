@@ -92,7 +92,7 @@ def add(text_input: str):
 @ input_error
 def change(text_input: str):
     if text_input.split()[1] in addressbook.data:
-        old_phone = input('enter phone number to change')
+        old_phone = input('enter phone number to change  ')
         changing = addressbook.data[text_input.split()[1]]
         changing.change_phone(old_phone, text_input.split()[2])
         print('it was changed')
