@@ -23,10 +23,11 @@ class Record:
                 print('Cant find this phone number')
 
     def remove_phone(self, old_phone):
-        if old_phone in self.phones:
-            self.phones.remove(old_phone)
-        else:
-            print('cant find this phone number')
+        for phone in self.phones:
+            if phone.value == old_phone:
+                self.phones.remove(phone)
+            else:
+                print('cant find this phone number')
 
     def __repr__(self):
         return f'{self.phones}'
@@ -83,7 +84,9 @@ def add(text_input: str):
         addressbook.add_record(adding)
         print('Its done')
     else:
-        print('This contact is exist')
+        adder = addressbook.data[text_input.split()[1]]
+        adder.add_phone(text_input.split()[2])
+        print('Done')
 
 
 @ input_error
@@ -98,9 +101,17 @@ def change(text_input: str):
 
 
 @ input_error
-def delete(text_input: str):
+def delete_contact(text_input: str):
     if text_input.split()[1] in addressbook.data:
         addressbook.data.pop(text_input.split()[1])
+        print('Done')
+
+
+@ input_error
+def remove_phone(text_input: str):
+    if text_input.split()[1] in addressbook.data:
+        removing = addressbook.data[text_input.split()[1]]
+        removing.remove_phone(text_input.split()[2])
         print('Done')
 
 
@@ -118,7 +129,8 @@ USER_INPUT = {
     'change': change,
     'phone': phone,
     'show all': show_all,
-    'delete': delete
+    'delete': delete_contact,
+    'remove': remove_phone
 }
 
 
