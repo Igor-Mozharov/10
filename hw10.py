@@ -40,9 +40,6 @@ class Name(Field):
     def __init__(self, name):
         self.value = name
 
-    # def __repr__(self):
-    #     return self.value
-
 
 class Phone(Field):
     def __init__(self, phone):
@@ -141,12 +138,3 @@ def main():
 
 
 main()
-# user = Record('Igor')
-# user.add_phone('0500000000')
-# user.add_phone('5555555555')
-
-# adres = AddressBook()
-# adres.add_record(user)
-
-# user.change_phone('0500000000', '777')
-# print(user.phones)
